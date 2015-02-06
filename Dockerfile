@@ -19,6 +19,7 @@ RUN php5enmod mcrypt
 RUN echo %sudo        ALL=NOPASSWD: ALL >> /etc/sudoers
 RUN useradd docker && echo "docker:docker" | chpasswd && adduser docker sudo
 RUN mkdir -p /home/docker/www && chown -R docker:docker /home/docker
+RUN usermod -a -G www-data docker
 
 # Shared volume
 VOLUME ["/home/docker/www"]
